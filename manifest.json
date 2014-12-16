@@ -1,8 +1,8 @@
 {
-  "name": "CHANGE THIS : Extension boilerplate",
+  "name": "Krist-off",
   "version": "0.0.1",
   "manifest_version": 2,
-  "description": "This extension was created with the awesome extensionizr.com",
+  "description": "Hide articles from your least favorite NYT authors.",
   "homepage_url": "http://extensionizr.com",
   "icons": {
     "16": "icons/icon16.png",
@@ -10,17 +10,11 @@
     "128": "icons/icon128.png"
   },
   "default_locale": "en",
-  "permissions": [
-    "http://www.nytimes.com/*"
-  ],
   "content_scripts": [
     {
-      "matches": [
-        "https://www.google.com/*"
-      ],
-      "js": [
-        "src/inject/inject.js"
-      ]
+      "matches": ["http://www.nytimes.com/*"],
+      "js": ["js/jquery/jquery.min.js", "src/inject/inject.js"],
+      "run_at": "document_end"
     }
   ]
 }
