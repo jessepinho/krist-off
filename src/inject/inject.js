@@ -1,13 +1,13 @@
-chrome.extension.sendMessage({}, function(response) {
-	var readyStateCheckInterval = setInterval(function() {
-	if (document.readyState === "complete") {
-		clearInterval(readyStateCheckInterval);
+(function() {
 
-		// ----------------------------------------------------------
-		// This part of the script triggers when page is done loading
-		console.log("Hello. This message was sent from scripts/inject.js");
-		// ----------------------------------------------------------
+  if ($('meta[name="author"]').attr('content') === 'Nicholas Kristof') {
+    if (window.confirm("WARNING: This is a Nicholas Kristof article. Back to safety?")) {
+      window.location.href = 'http://www.nytimes.com';
+    }
+  }
 
-	}
-	}, 10);
-});
+  if (window.location.pathname === '/') {
+    $('h2.story-heading:contains("Kristof:")').remove();
+  }
+
+})();
